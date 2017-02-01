@@ -156,7 +156,7 @@ exports.deleteArticle = function deleteArticle(req, res, next) {
     }
 
     // Find Related Comments and Remove Consequently
-    Comment.delete({ article: article._id }, function removeComments(err) {
+    Comment.delete1({ article: article._id }, function removeComments(err) {
       if(err) {
         return next(err);
       }
@@ -166,3 +166,48 @@ exports.deleteArticle = function deleteArticle(req, res, next) {
   });
 
 };
+// Update Article
+exports.updateArticle=function updateArticle(req, res, next) {
+  var body      = req.body;
+  var articleId = req.params.articleId;
+
+  // Update the given Article using the body data
+  Article.findByIdAndUpdate(articleId, body, function update(err, article) {
+    if(err) {
+      return next(err);
+    }
+
+    if(!article) {
+      res.status(404);
+      res.json({
+        error: true,
+        message: 'Article To Be Updated Not Found!',
+        status: 404
+      });
+      return;
+
+    } else {
+      res.json(article);
+
+    }
+  });
+
+}
+// Update All Articles
+exports.updateArticles= function updateArticles(req, res, next) {
+  var body = req.body;
+
+  // Update all articles using the given body data;
+  Article.update(body, function updateAll(err) {
+    if(err) {
+      return next(err);
+    }
+
+    res.json({
+      message: 'All Articles updated successfully'
+    });
+
+  });
+
+
+}

@@ -1,7 +1,7 @@
 {
-  "name": "gebeya-api",
+  "name": "blog-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "this is blog api",
   "main": "app.js",
   "directories": {
     "test": "test"
@@ -9,6 +9,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "http://git.gebeya.com/nodejs/blog-api.git"
+  },
   "author": "",
-  "license": "MIT"
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.1.4",
+    "body-parser": "^1.16.0",
+    "express": "^4.14.1",
+    "mongoose": "^4.8.1",
+    "response-time": "^2.3.2",
+    "xtend": "^4.0.1"
+  }
 }
